@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>융캡디 - 종강 D-84</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     
+</head>
+
+  <body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Tortle Arm">
+                </a>
+            </h1>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+      <div class="left-panel">
+        <section class="calculator-section">
+            <div class="section-header">
+              <h2>나의 적절 세팅</h2>
+            </div>
+
+            <div class="input-group">
+                <div class="slider-labels">
+                    <label for="height-slider">나의 신장 입력 (cm)</label>
+                    <div class="height-display"><span id="current-height">178</span>cm</div>
+                </div>
+                <input type="range" id="height-slider" min="150" max="200" value="178" step="1">
+                <div class="slider-range-labels">
+                    <span>150cm</span><span>160cm</span><span>170cm</span><span>180cm</span><span>190cm</span><span>200cm</span>
+                </div>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card active">
+                    <h3>의자 높이</h3>
+                    <div class="icon-box"> 
+                        <img src="chair.png" alt="Chair Height" class="res-icon">
+                        <p><span id="chair-res">--</span> cm</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <h3>책상 높이</h3>
+                    <div class="icon-box">
+                        <img src="desk.png" alt="Desk Height" class="res-icon">
+                        <p><span id="desk-res">--</span> cm</p>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <h3>모니터 높이 (상단)</h3>
+                    <div class="icon-box">
+                        <img src="monitor.png" alt="Monitor Height" class="res-icon">
+                        <p><span id="monitor-res">--</span> cm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ratio-selector-section">
+              <h3>체형 비율 선택</h3>
+               <div class="ratio-container">
+                  <div class="ratio-card" data-ratio="0.9" onclick="selectRatio(this)">
+                   <img src="leg_dominant.png" alt="Leg Dominant">
+                      <span class="ratio-desc">하체 긴 편</span>
+                 </div>
+                 <div class="ratio-card active" data-ratio="1.0" onclick="selectRatio(this)">
+                    <img src="balanced.png" alt="Balanced">
+                     <span class="ratio-desc">표준 비율</span>
+                 </div>
+                   <div class="ratio-card" data-ratio="1.1" onclick="selectRatio(this)">
+                      <img src="torso_dominant.png" alt="Torso Dominant">
+                       <span class="ratio-desc">상체 긴 편</span>
+                   </div>
+                  </div>
+                </div>
+        </section>
+    </div>
+
+    <div class="right-panel">
+        <div class="right-row-top">
+            <section class="control-section">
+                <div class="section-header">
+                    <h2>수동 제어<h2>
+                    <div class ="setting">
+                    <button id="up-btn" class="btn-up">
+                        <span class="btn-icon">↑</span> &nbsp;UP
+                    </button>
+                    <button id="down-btn" class="btn-down">
+                        <span class="btn-icon">↓</span> &nbsp;DOWN
+                    </button>
+                    <button id="forward-btn" class="btn-forward">
+                        <span class="btn-icon">+</span> &nbsp;FRONT
+                    </button>
+                    <button id="backward-btn" class="btn-backward">
+                        <span class="btn-icon">-</span> &nbsp;BACK
+                    </button>
+                    </div>
+                </div>
+                <div class="control-actions">
+                <button id="start-btn" class="btn btn-start" onclick="toggleSystem('start' , this)">
+                    <span class="btn-icon">▶</span> START / PAUSE
+                </button>
+                <button id="stop-btn" class="btn btn-stop active" onclick="toggleSystem('stop',this)">
+                    <span class="btn-icon">■</span> RESET , STOP
+                </button>
+                </div>
+            </section>
+
+            <section class="monitoring-section">
+                <div class="section-header">
+                    <h2>실시간 모니터링</h2></div>
+                <div class="timer-group">
+                    <span class="timer-label">총 실행 시간</span>
+                    <div class="timer-value" id="total-runtime">00:00:00</div> 
+                </div>
+                <div class="timer-group warning">
+                    <span class="timer-label">거북목 지속 시간</span>
+                    <div class="timer-value" id="turtle-runtime">00:00:00</div> 
+                </div>
+            </section>
+        </div>
+        <section class="graph-monitoring-section">
+            <div class="section-header">
+                <h2>실시간 분석</h2>
+                <div class="status-indicator">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">LIVE</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="realtime-chart"></canvas>
+            </div>
+        </section>
+    </div>
+</main>
+
+
+      </div>
+    </section>
+  </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #10141d;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 상단 헤더  */
+.header {
+  width: 98%;
+  height: 85px;
+  background-color: #10141d;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #2d3644; /*  경계선 */
+}
+
+.section-header {
+  font-size: 12px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+.dashboard-container {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.left-panel {
+  flex: 1.1px;
+  width: 80%;
+  top: 10px;
+}
+
+.right-panel {
+  flex: 1.2px;
+  height: 350px;
+  width: 150%;
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-row-top {
+  display: flex;
+  flex-direction: row; /* 가로 정렬 */
+  gap: 20px;
+  width: 100%;
+  margin-bottom: -50px;
+}
+
+.calculator-section {
+  background-color: #1b212c;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #2d3644;
+}
+
+/*  슬라이더 */
+input[type="range"] {
+  -webkit-appearance: none; /* 기본 스타일 제거 */
+  width: 100%;
+  height: 8px;
+  background: #2d3644;
+  border-radius: 10px;
+  outline: none;
+  background-image: linear-gradient(#96cef2, #5ae3a3);
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  cursor: pointer;
+}
+
+/* 슬라이더 손잡이 */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #83aff7;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  margin-top: -2px;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* 결과 카드 및 기타 레이아웃 */
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.height-display {
+  background-color: #0c1016;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.slider-range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.results-grid {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.result-card {
+  flex: 1;
+  background-color: #242b36;
+  border: 1px solid #333d4d;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.result-card h3 {
+  font-size: 0.9rem;
+}
+.result-card p span {
+  color: #5ae3a3;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+/* 아이콘 자체 크기 조절 */
+.res-icon {
+  width: 120px; /* 원하는 크기로 조절 (기존보다 작게) */
+  height: auto; /* 비율 유지 */
+  margin-bottom: 10px; /* 아이콘과 아래 텍스트 사이 간격 */
+  display: block; /* 중앙 정렬을 위해 필요 */
+  margin-left: auto; /* 중앙 정렬 */
+  margin-right: auto; /* 중앙 정렬 */
+  opacity: 0.8; /* 너무 튀면 약간 투명하게 조절 가능 */
+}
+
+/* 비율 선택 섹션 */
+.ratio-selector-section {
+  margin-top: 20px;
+  background-color: #1b212c;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #2d3644;
+}
+
+.ratio-selector-section h3 {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+.ratio-container {
+  display: flex;
+  gap: 15px;
+}
+
+.ratio-card {
+  flex: 1;
+  background-color: #0c1016;
+  border: 1px solid #2d3644;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ratio-card img {
+  width: 60px;
+  height: 40px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  object-fit: cover;
+}
+
+.ratio-card span {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.ratio-card.active {
+  border-color: #5ae3a3;
+  box-shadow: 0 0 15px rgba(90, 227, 163, 0.4);
+  background-color: rgba(90, 227, 163, 0.05);
+}
+
+.ratio-card.active img {
+  opacity: 1;
+  filter: drop-shadow(0 0 5px #5ae3a3);
+}
+
+.ratio-card.active span {
+  color: #5ae3a3;
+  font-weight: bold;
+}
+
+.control-section {
+  background-color: #1b212c;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #2d3644;
+  margin-bottom: 45px;
+  width: 310px;
+}
+
+/* 버튼들을 감싸는 영역 (가로/세로 정렬을 위해 필요) */
+.setting {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열로 배치 */
+  gap: 15px;
+  margin-bottom: -6px;
+  margin-top: 12px;
+}
+
+/* 개별 방향 버튼 스타일 (기존 .btn 스타일 활용) */
+.setting button {
+  background-color: #040404;
+  border: 0px solid #ffffff;
+  color: white;
+  font: 8px;
+  padding: 12px;
+  width: 115px;
+  height: 42px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 6px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.setting button:hover {
+  background-color: #b0b8c3;
+  border: 0px solid #5ae3a3;
+  color: black;
+}
+
+#stop-btn {
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 세로로 나열 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 (아이콘/텍스트 모두) */
+  gap: 3px; /* 아이콘과 텍스트 사이 간격 */
+  height: auto; /* 높이가 너무 낮으면 텍스트가 잘릴 수 있으니 확인 */
+  padding: 10px 0;
+  font-size: 0.8rem;
+}
+
+#start-btn {
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 세로로 나열 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 (아이콘/텍스트 모두) */
+  gap: 5px; /* 아이콘과 텍스트 사이 간격 */
+  height: auto; /* 높이가 너무 낮으면 텍스트가 잘릴 수 있으니 확인 */
+  padding: 10px 0;
+  font-size: 0.8rem;
+}
+
+#start-btn .btn-icon {
+  font-size: 1.2rem; /* 아이콘 크기 살짝 키우기 (선택) */
+  margin-bottom: -4px; /* 기존 마진 제거 */
+}
+
+#stop-btn .btn-icon {
+  font-size: 1.2rem; /* 아이콘 크기 살짝 키우기 (선택) */
+  margin-bottom: -2px; /* 기존 마진 제거 */
+}
+
+/* 버튼 컨테이너 */
+.control-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* 하단 버튼 기본 상태 */
+.btn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid transparent; /* 테두리 공간 확보 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* START 활성화 */
+.btn-start.active {
+  color: #ffffff;
+  background: linear-gradient(145deg, #10b981, #059669);
+  border-color: #34d399;
+  box-shadow:
+    0 0 20px rgba(16, 185, 129, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* STOP 활성화 */
+.btn-stop.active {
+  color: #ffffff;
+  background: linear-gradient(145deg, #ef4444, #dc2626);
+  border-color: #f87171;
+  box-shadow:
+    0 0 20px rgba(239, 68, 68, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* 비활성 버튼에 마우스 올렸을 때 반응 */
+.btn:not(.active):hover {
+  color: #fff;
+}
+
+#timer-header {
+  margin-top: -12px;
+  margin-top: -12px;
+}
+
+.timer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: -8px;
+}
+
+.timer-card {
+  background-color: #0c1016;
+  border: 1px solid #2d3644;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.timer-label {
+  display: block;
+  font-size: 12px;
+  color: #a0aec0;
+  margin-bottom: -14px;
+  margin-top: -6px;
+}
+
+.timer-value {
+  font-size: 28px;
+  color: #5ae3a3;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#turtle-runtime {
+  color: #ffffff;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* 부모 박스 정렬 */
+.icon-box,
+.icon-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.monitoring-section {
+  background-color: #1b212c; /* 계산기 섹션과 동일한 배경색 */
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #2d3644;
+  height: 305px;
+}
+
+/* LIVE 상태 표시기 */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0c1016;
+  padding: 5px 12px;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background-color: #5ae3a3; /* 네온 그린 */
+  box-shadow: 0 0 10px rgba(90, 227, 163, 0.8);
+  animation: pulse 1.5s infinite; /* 깜빡이는 효과 */
+}
+
+.status-text {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: bold;
+}
+
+/* 그래프 컨테이너 */
+.chart-container {
+  width: 100%;
+  height: 350px; /* 그래프 높이 고정 */
+  margin-top: 20px;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+/* 데이터 요약 스타일 */
+.data-summary {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  border-top: 1px solid #2d3644;
+  padding-top: 15px;
+}
+
+.summary-item {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.summary-item .value {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 2px;
+}
+
+.summary-item .value.monitor-active {
+  color: #5ae3a3; /* 네온 그린 */
+}
+
+/* 깜빡임 애니메이션 정의 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(90, 227, 163, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(90, 227, 163, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(90, 227, 163, 0);
+  }
+}
+
+.timer-only {
+  flex: 1; /* 타이머 박스 비율 */
+  width: auto;
+}
+
+/* 하단 그래프 섹션 */
+.graph-only {
+  width: 90%; /* 가로 꽉 채우기 */
+  margin-top: 0;
+  height: 0px;
+}
+
+/* 그래프 컨테이너 높이 */
+.chart-container {
+  width: 90%;
+  height: 220px;
+  margin-top: 20px;
+}
