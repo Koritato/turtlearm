@@ -244,3 +244,27 @@ function simulateRealtimeData() {
 
 // 1초(1000ms)마다 데이터 업데이트 함수 호출
 setInterval(simulateRealtimeData, 1000);
+
+const chartIds = ['neck-angle', 'cva', 'shoulder', 'head-tilt', 'neck-turn'];
+const charts = {};
+
+chartIds.forEach(id => {
+    const ctx = document.getElementById(`chart-${id}`).getContext('2d');
+    charts[id] = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // x축: 총 사용 시간 (아두이노 전달값)
+            datasets: [{
+                label: id.toUpperCase(),
+                data: [], // y축: 파이썬 전달값
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+});

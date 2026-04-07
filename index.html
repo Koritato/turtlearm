@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>융캡디 - 종강 D-84</title>
+    <title>융캡디 - 종강 D-75</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
      
@@ -77,75 +77,104 @@
                       <img src="torso_dominant.png" alt="Torso Dominant">
                        <span class="ratio-desc">상체 긴 편</span>
                    </div>
-                  </div>
                 </div>
+            </div>
         </section>
-    </div>
+        </div>
 
-    <div class="right-panel">
-        <div class="right-row-top">
-            <section class="control-section">
-                <div class="section-header">
-                    <h2>수동 제어<h2>
-                    <div class ="setting">
-                    <button id="up-btn" class="btn-up">
-                        <span class="btn-icon">↑</span> &nbsp;UP
+        <div class="right-panel">
+            <div class="right-row-top">
+                <section class="control-section">
+                    <div class="section-header">
+                        <h2>수동 제어<h2>
+                        <div class ="setting">
+                        <button id="up-btn" class="btn-up">
+                            <span class="btn-icon">↑</span> &nbsp;UP
+                        </button>
+                        <button id="down-btn" class="btn-down">
+                            <span class="btn-icon">↓</span> &nbsp;DOWN
+                        </button>
+                        <button id="forward-btn" class="btn-forward">
+                            <span class="btn-icon">+</span> &nbsp;FRONT
+                        </button>
+                        <button id="backward-btn" class="btn-backward">
+                            <span class="btn-icon">-</span> &nbsp;BACK
+                        </button>
+                        </div>
+                    </div>
+                    <div class="control-actions">
+                    <button id="start-btn" class="btn btn-start" onclick="toggleSystem('start' , this)">
+                        <span class="btn-icon">▶</span> START / PAUSE
                     </button>
-                    <button id="down-btn" class="btn-down">
-                        <span class="btn-icon">↓</span> &nbsp;DOWN
-                    </button>
-                    <button id="forward-btn" class="btn-forward">
-                        <span class="btn-icon">+</span> &nbsp;FRONT
-                    </button>
-                    <button id="backward-btn" class="btn-backward">
-                        <span class="btn-icon">-</span> &nbsp;BACK
+                    <button id="stop-btn" class="btn btn-stop active" onclick="toggleSystem('stop',this)">
+                        <span class="btn-icon">■</span> RESET , STOP
                     </button>
                     </div>
-                </div>
-                <div class="control-actions">
-                <button id="start-btn" class="btn btn-start" onclick="toggleSystem('start' , this)">
-                    <span class="btn-icon">▶</span> START / PAUSE
-                </button>
-                <button id="stop-btn" class="btn btn-stop active" onclick="toggleSystem('stop',this)">
-                    <span class="btn-icon">■</span> RESET , STOP
-                </button>
-                </div>
-            </section>
+                </section>
 
-            <section class="monitoring-section">
+                <section class="monitoring-section">
+                    <div class="section-header">
+                        <h2>실시간 모니터링</h2></div>
+                    <div class="timer-group">
+                        <span class="timer-label">총 실행 시간</span>
+                        <div class="timer-value" id="total-runtime">00:00:00</div> 
+                    </div>
+                    <div class="timer-group warning">
+                        <span class="timer-label">거북목 지속 시간</span>
+                        <div class="timer-value" id="turtle-runtime">00:00:00</div> 
+                    </div>
+                </section>
+            </div>
+            <section class="graph-monitoring-section">
                 <div class="section-header">
-                    <h2>실시간 모니터링</h2></div>
-                <div class="timer-group">
-                    <span class="timer-label">총 실행 시간</span>
-                    <div class="timer-value" id="total-runtime">00:00:00</div> 
+                    <h2>실시간 분석</h2>
+                    <div class="status-indicator">
+                        <span class="status-dot online"></span>
+                        <span class="status-text">LIVE</span>
+                    </div>
                 </div>
-                <div class="timer-group warning">
-                    <span class="timer-label">거북목 지속 시간</span>
-                    <div class="timer-value" id="turtle-runtime">00:00:00</div> 
+                <div class="chart-container">
+                    <canvas id="realtime-chart"></canvas>
                 </div>
             </section>
         </div>
-        <section class="graph-monitoring-section">
-            <div class="section-header">
-                <h2>실시간 분석</h2>
-                <div class="status-indicator">
-                    <span class="status-dot online"></span>
-                    <span class="status-text">LIVE</span>
+    </main>
+    <div class="left-second-panel">
+    
+    <section class="report-section">
+        <div class="report-header">
+            <h2>자세 분석</h2>
+        </div>
+        
+        <div class="graph-main-container">
+            <div class="graph-column">
+                <div class="chart-box"><canvas id="chart-neck-angle"></canvas></div>
+                <div class="chart-box"><canvas id="chart-cva"></canvas></div>
+                <div class="chart-box"><canvas id="chart-shoulder"></canvas></div>
+            </div>
+            <div class="graph-column">
+                <div class="chart-box"><canvas id="chart-head-tilt"></canvas></div>
+                <div class="chart-box"><canvas id="chart-neck-turn"></canvas></div>
+                <div style="flex: 2; display: flex; align-items: center; justify-content: center; opacity: 0.2;">
+                    <img src="logo.png" style="width: 200px;">
                 </div>
             </div>
-            <div class="chart-container">
-                <canvas id="realtime-chart"></canvas>
-            </div>
-        </section>
-    </div>
-</main>
-
-
-      </div>
+        </div>
     </section>
-  </div>
 
-    </main>
+    <section class="feedback-section">
+        <div class="feedback-header">
+            <h2>자세 피드백</h2>
+        </div>
+            <div id="ai-feedback-content">
+                데이터 분석을 대기 중입니다...
+            </div>
+            <button onclick="testAIFeedback()" style="background: #5ae3a3; color: #10141d; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px;">
+                AI 분석 실행
+            </button>
+    </section>
+</div>
+
 
     <script src="script.js"></script>
 </body>
