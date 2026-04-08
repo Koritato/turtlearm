@@ -506,7 +506,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .left-second-panel {
   margin: 60px auto; /* 상하 여백만 주고 좌우는 자동 중앙 정렬 */
   display: flex;
-  flex-wrap: wrap;    /* 공간 부족 시 피드백 섹션이 아래로 내려가게 함 */
   gap: 20px;  
   width: 100%;       /* 부모 container의 폭을 따름 */
   max-width: 1300px; /* 상단 대시보드와 폭을 맞춤 */
@@ -553,7 +552,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
    font-size: 16px;
    line-height: 1.6;
    flex: 1;
-   overflow-y: auto;
 }
 
 /* 그래프 5개를 예쁘게 배치하는 그리드 */
