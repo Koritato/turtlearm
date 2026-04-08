@@ -17,7 +17,7 @@ body {
 /* 상단 헤더  */
 .header {
   width: 98%;
-  height: 85px;
+  height: 80px;
   background-color: #10141d;
   display: flex;
   align-items: center;
@@ -53,12 +53,12 @@ body {
 }
 
 .left-panel {
-  flex: 1.1px;
+  flex: 1.1;
   width: 80%;
 }
 
 .right-panel {
-  flex: 1.2px;
+  flex: 1.2;
   height: 350px;
   width: 150%;
   display: flex;
@@ -420,7 +420,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   background-color: #0c1016;
   padding: 5px 12px;
   border-radius: 20px;
-  width: 90%;
+  width: 10%;
 }
 
 .status-dot {
@@ -443,7 +443,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* 그래프 컨테이너 */
 .chart-container {
-  width: 528px ;
+  width: 86% ;
   height: 220px;
   margin-top: 20px;
   margin-bottom: 0px;
@@ -501,18 +501,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* 목 각도 , cva, 어깨 기울기, 헤드틸트, 넥턴  */
-
+/*지금부터수정할거니까 잘확인해
 /* 하단 영역 전체 설정 */
 .left-second-panel {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin: 60px auto; /* 상하 여백만 주고 좌우는 자동 중앙 정렬 */
   display: flex;
-  gap: 20px; 
-  align-items: stretch; 
-  width: 82%;
-  max-width: 1420px;
-  margin-left: 94px ;
-  padding: 0 30px;
+  flex-wrap: wrap;    /* 공간 부족 시 피드백 섹션이 아래로 내려가게 함 */
+  gap: 20px;  
+  width: 100%;       /* 부모 container의 폭을 따름 */
+  max-width: 1300px; /* 상단 대시보드와 폭을 맞춤 */
+  padding: 0 20px;
+  box-sizing: border-box;
+  align-items: stretch;
 }
 
  .graph-main-container {
@@ -522,12 +522,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
  }
 /* 5개 그래프를 감싸는 박스 */
 .report-section {
-  background-color: #1b212c; /* 기존 섹션들과 통일감 있는 색상 */
+  background-color: #1b212c;
   border-radius: 20px;
   padding: 30px;
   border: 1px solid #2d3644;
-  min-width: 780px;
-  flex: 1;
+  flex: 2.2;            /* 오른쪽 피드백 섹션보다 2배 정도 넓게 설정 */
+  min-height: 700px;
   display: flex;
   flex-direction: column;
 }
@@ -535,24 +535,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .feedback-section {
   background-color: #1b212c; /* 기존 섹션들과 통일감 있는 색상 */
   border-radius: 20px;
-  padding: 35px;
+  padding: 30px;
   border: 1px solid #2d3644;
   flex: 1;
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 660px;
+  height: auto;
+  margin-right: 80px;
 }
 
 #ai-feedback-content {
    background: #0c1016;
-   width: 300px;
+   width: 100%;
    padding: 20px;
    color:#ffffff;
    border-radius: 12px;
    font-size: 16px;
    line-height: 1.6;
-   height: 100%;
+   flex: 1;
    overflow-y: auto;
 }
 
@@ -571,7 +571,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-radius: 12px;
   padding: 15px;
   height: 180px; /* 각 그래프 높이 */
-  width: 360px
+  width: 100%;
 }
 
 .report-section {
@@ -583,6 +583,5 @@ input[type="range"]::-webkit-slider-thumb:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: max-content
   
 }
