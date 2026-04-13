@@ -437,7 +437,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* 그래프 컨테이너 */
 .chart-container {
-  width: 86% ;
+  width: 562px ;
   height: 220px;
   margin-top: 20px;
   margin-bottom: 0px;
@@ -487,12 +487,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   width: auto;
 }
 
-/* 하단 그래프 섹션 */
-.graph-only {
-  width: 90%; 
-  margin-top: 0;
-  height: 0px;
-}
+
 
 /* 하단 영역 전체 설정 */
 .second-panel {
@@ -528,7 +523,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-radius: 20px;
   padding: 30px;
   border: 1px solid #2d3644;
-  flex: 1 0 417px;
+  flex: 1 0 446px;
   display: flex;
   flex-direction: column;
   height: 700px;
