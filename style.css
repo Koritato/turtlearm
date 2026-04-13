@@ -21,16 +21,12 @@ body {
   background-color: #10141d;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #2d3644; /*  경계선 */
+  border-bottom: 1px solid #2d3644; 
 }
 
-.section-header {
-  font-size: 12px;
-}
-
-.container {
+.head-container {
   width: 100%;
-  max-width: 1420px;
+  min-width: 1420px;
   margin: auto;
   padding: 0 30px;
   opacity: 0.8;
@@ -42,36 +38,19 @@ body {
   width: auto;
 }
 
-.dashboard-container {
+.dashboard {
   display: flex;
   flex: 1;
   gap: 20px;
-  width: 100%;
-  max-width: 1300px;
+  width: 1300px;
+  min-width: 1300px;
   margin: 0 auto;
   padding: 30px 20px;
 }
 
 .left-panel {
-  flex: 1.1;
+  flex: 0 0 600px;
   width: 80%;
-}
-
-.right-panel {
-  flex: 1.2;
-  height: 350px;
-  width: 150%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.right-row-top {
-  display: flex;
-  flex-direction: row; /* 가로 정렬 */
-  gap: 20px;
-  width: 100%;
-  margin-bottom: -50px;
 }
 
 .calculator-section {
@@ -79,6 +58,21 @@ body {
   border-radius: 20px;
   padding: 20px;
   border: 1px solid #2d3644;
+}
+
+/* 결과 카드 및 기타 레이아웃 */
+.input-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.height-display {
+  background-color: #0c1016;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 /*  슬라이더 */
@@ -110,21 +104,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-}
-
-/* 결과 카드 및 기타 레이아웃 */
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.height-display {
-  background-color: #0c1016;
-  padding: 8px 15px;
-  border-radius: 8px;
-  font-weight: bold;
 }
 
 .slider-range-labels {
@@ -170,6 +149,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
   opacity: 0.8; /* 너무 튀면 약간 투명하게 조절 가능 */
 }
 
+.ratio-container {
+  display: flex;
+  gap: 15px;
+}
+
 /* 비율 선택 섹션 */
 .ratio-selector-section {
   margin-top: 20px;
@@ -183,11 +167,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 0.9rem;
   color: #9ca3af;
   margin-bottom: 15px;
-}
-
-.ratio-container {
-  display: flex;
-  gap: 15px;
 }
 
 .ratio-card {
@@ -230,6 +209,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .ratio-card.active span {
   color: #5ae3a3;
   font-weight: bold;
+}
+
+.right-panel {
+  flex: 0 0 680px;
+  height: 350px;
+  width: auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-top-group {
+  display: flex;
+  flex-direction: row; /* 가로 정렬 */
+  gap: 20px;
+  width: 100%;
+  margin-bottom: -50px;
 }
 
 .control-section {
@@ -304,7 +300,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-bottom: -2px; /* 기존 마진 제거 */
 }
 
-/* 버튼 컨테이너 */
 .control-actions {
   display: flex;
   gap: 15px;
@@ -312,7 +307,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   width: 100%;
 }
 
-/* 하단 버튼 기본 상태 */
 .btn {
   flex: 1;
   padding: 12px 0;
@@ -351,6 +345,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* 비활성 버튼에 마우스 올렸을 때 반응 */
 .btn:not(.active):hover {
   color: #fff;
+}
+
+.timer-section {
+  background-color: #1b212c; /* 계산기 섹션과 동일한 배경색 */
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #2d3644;
+  height: 305px;
 }
 
 #timer-header {
@@ -402,14 +404,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   align-items: center;
   justify-content: center;
   padding: 10px;
-}
-
-.monitoring-section {
-  background-color: #1b212c; /* 계산기 섹션과 동일한 배경색 */
-  border-radius: 20px;
-  padding: 30px;
-  border: 1px solid #2d3644;
-  height: 305px;
 }
 
 /* LIVE 상태 표시기 */
@@ -475,7 +469,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   color: #5ae3a3; /* 네온 그린 */
 }
 
-/* 깜빡임 애니메이션 정의 */
+/* 깜빡임 애니메이션 */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(90, 227, 163, 0.7);
@@ -495,20 +489,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* 하단 그래프 섹션 */
 .graph-only {
-  width: 90%; /* 가로 꽉 채우기 */
+  width: 90%; 
   margin-top: 0;
   height: 0px;
 }
 
-/* 목 각도 , cva, 어깨 기울기, 헤드틸트, 넥턴  */
-/*지금부터수정할거니까 잘확인해
 /* 하단 영역 전체 설정 */
-.left-second-panel {
+.second-panel {
   margin: 60px auto; /* 상하 여백만 주고 좌우는 자동 중앙 정렬 */
   display: flex;
   gap: 20px;  
-  width: 100%;       /* 부모 container의 폭을 따름 */
-  max-width: 1300px; /* 상단 대시보드와 폭을 맞춤 */
+  width: 100%;       
+  max-width: 1300px; 
   padding: 0 20px;
   box-sizing: border-box;
   align-items: stretch;
@@ -536,7 +528,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-radius: 20px;
   padding: 30px;
   border: 1px solid #2d3644;
-  flex: 1 0 400px;
+  flex: 1 0 417px;
   display: flex;
   flex-direction: column;
   height: 700px;
@@ -554,7 +546,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
    flex: 1;
 }
 
-/* 그래프 5개를 예쁘게 배치하는 그리드 */
+/* 그래프 배치 그리드 */
 .graph-grid {
   display: flex;
   flex-direction: row;

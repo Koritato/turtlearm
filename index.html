@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>융캡디 화이팅</title>
+    <title>융캡디 - 종강 D-70?</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
      
@@ -11,24 +11,24 @@
 
   <body>
     <header class="header">
-        <div class="container">
+        <div class="head-container">
             <h1 class="logo">
                 <a href="index.html">
-                    <img src="logo.png" alt="Tortle Arm">
+                    <img src="logo.png">
                 </a>
             </h1>
         </div>
     </header>
 
-    <main class="dashboard-container">
+    <main class="dashboard">
       <div class="left-panel">
         <section class="calculator-section">
             <div class="section-header">
               <h2>나의 적절 세팅</h2>
             </div>
 
-            <div class="input-group">
-                <div class="slider-labels">
+            <div class="input-container">
+                <div class="input-grid">
                     <label for="height-slider">나의 신장 입력 (cm)</label>
                     <div class="height-display"><span id="current-height">178</span>cm</div>
                 </div>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="right-panel">
-            <div class="right-row-top">
+            <div class="right-top-group">
                 <section class="control-section">
                     <div class="section-header">
                         <h2>수동 제어<h2>
@@ -112,7 +112,7 @@
                     </div>
                 </section>
 
-                <section class="monitoring-section">
+                <section class="timer-section">
                     <div class="section-header">
                         <h2>실시간 모니터링</h2></div>
                     <div class="timer-group">
@@ -139,41 +139,41 @@
             </section>
         </div>
     </main>
-    <div class="left-second-panel">
+    <div class="second-panel">
     
-    <section class="report-section">
-        <div class="report-header">
-            <h2>자세 분석</h2>
-        </div>
-        
-        <div class="graph-main-container">
-            <div class="graph-column">
-                <div class="chart-box"><canvas id="chart-neck-angle"></canvas></div>
-                <div class="chart-box"><canvas id="chart-cva"></canvas></div>
-                <div class="chart-box"><canvas id="chart-shoulder"></canvas></div>
+       <section class="report-section">
+            <div class="report-header">
+                <h2>자세 분석</h2>
             </div>
-            <div class="graph-column">
-                <div class="chart-box"><canvas id="chart-head-tilt"></canvas></div>
-                <div class="chart-box"><canvas id="chart-neck-turn"></canvas></div>
-                <div style="flex: 2; display: flex; align-items: center; justify-content: center; opacity: 0.2;">
-                    <img src="logo.png" style="width: 200px;">
+        
+         <div class="graph-main-container">
+                <div class="graph-column">
+                    <div class="chart-box"><canvas id="chart-neck-angle"></canvas></div>
+                    <div class="chart-box"><canvas id="chart-cva"></canvas></div>
+                    <div class="chart-box"><canvas id="chart-shoulder"></canvas></div>
+                </div>
+                <div class="graph-column">
+                    <div class="chart-box"><canvas id="chart-head-tilt"></canvas></div>
+                    <div class="chart-box"><canvas id="chart-neck-turn"></canvas></div>
+                    <div style="flex: 2; display: flex; align-items: center; justify-content: center; opacity: 0.2;">
+                        <img src="logo.png" style="width: 200px;">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="feedback-section">
-        <div class="feedback-header">
-            <h2>자세 피드백</h2>
-        </div>
-            <div id="ai-feedback-content">
-                데이터 분석을 대기 중입니다...
+        <section class="feedback-section">
+            <div class="feedback-header">
+                <h2>자세 피드백</h2>
             </div>
-            <button onclick="testAIFeedback()" style="background: #5ae3a3; color: #10141d; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px;">
-                AI 분석 실행
-            </button>
-    </section>
-</div>
+                <div id="ai-feedback-content">
+                    데이터 분석을 대기 중입니다...
+                </div>
+                <button onclick="testAIFeedback()" style="background: #5ae3a3; color: #10141d; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px;">
+                    AI 분석 실행
+                </button>
+        </section>
+    </div>
 
 
     <script src="script.js"></script>
