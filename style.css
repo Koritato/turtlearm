@@ -235,6 +235,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border: 1px solid #2d3644;
   margin-bottom: 45px;
   width: 310px;
+  height: 310px;
 }
 
 /* 버튼들을 감싸는 영역 (가로/세로 정렬을 위해 필요) */
@@ -352,7 +353,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border-radius: 20px;
   padding: 30px;
   border: 1px solid #2d3644;
-  height: 305px;
+  height: 310px;
 }
 
 #timer-header {

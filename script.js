@@ -16,7 +16,7 @@ function selectRatio(element) {
     document.querySelectorAll('.ratio-card').forEach(card => card.classList.remove('active'));
     element.classList.add('active');
     
-    // 선택된 카드에 따라 타입 저장 (data-ratio 속성 대신 타입을 식별자로 사용 권장)
+    // 선택된 카드에 따라 타입 저장
     const ratioText = element.querySelector('.ratio-desc').innerText;
     if (ratioText === "하체 긴 편") currentRatioType = 'leg';
     else if (ratioText === "상체 긴 편") currentRatioType = 'torso';
